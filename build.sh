@@ -16,9 +16,12 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 INPUT="bsect.asm"
-OUTPUT="disk"
-KERN="./barebones"
-RD="./big.init"
+
+[ $# -lt 3 ] && echo "Wrong number of arguments. Expecting 3 got $#" && exit 1
+
+KERN="$1"
+RD="$2"
+OUTPUT="$3"
 
 #size of kern + ramdisk
 K_SZ=`stat -c %s $KERN`
